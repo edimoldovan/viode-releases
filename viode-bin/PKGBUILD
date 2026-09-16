@@ -32,7 +32,7 @@ optdepends=(
 provides=('viode')
 conflicts=('viode')
 source=("$url/releases/download/v$pkgver/viode_${pkgver}_amd64.deb")
-sha256sums=('589c758b919b9b54b9e9335660ffca82520bf27931dc09776f6e5a0f5e8ff177')
+sha256sums=('01c3837a9bf5dbed8f81bd894a0c3cb5788558c3609d52422b24e2457418f24c')
 
 package() {
   bsdtar -xf "$srcdir"/data.tar.* -C "$pkgdir"
