@@ -1,0 +1,39 @@
+# Maintainer: Eduard Moldovan <himself@eduardmoldovan.com>
+#
+# The Arch binary package: repackages the released .deb, since the
+# source is private. Dependencies are declared, pacman brings the
+# whole engine, and `viode doctor` comes up green with no manual
+# steps. This file lives in the viode-releases repository (clone and
+# `makepkg -si`) and goes to the AUR as `viode-bin` the day AUR
+# account registration reopens.
+
+pkgname=viode-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="AI-native video editor: desktop app, terminal UI, CLI, and an AI connection over one engine"
+arch=('x86_64')
+url="https://github.com/edimoldovan/viode-releases"
+license=('LicenseRef-PolyForm-Free-Trial-1.0.0')
+depends=(
+  'gstreamer'
+  'gst-plugins-base'
+  'gst-plugins-good'
+  'gst-plugins-bad'
+  'gst-plugins-ugly'
+  'gst-libav'
+  'gst-editing-services'
+  'ffmpeg'
+)
+optdepends=(
+  'mpv: inline terminal playback and the chaptered watch player'
+  'gst-plugin-va: hardware decode/encode (opt-in via VIODE_HWACCEL after viode bench)'
+  'whisper.cpp: transcription, edit-by-text, and captions'
+)
+provides=('viode')
+conflicts=('viode')
+source=("$url/releases/download/v$pkgver/viode_${pkgver}_amd64.deb")
+sha256sums=('SKIP') # set to the released .deb's sum at release time
+
+package() {
+  bsdtar -xf "$srcdir"/data.tar.* -C "$pkgdir"
+}
