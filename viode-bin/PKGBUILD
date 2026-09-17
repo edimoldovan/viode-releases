@@ -8,7 +8,7 @@
 # account registration reopens.
 
 pkgname=viode-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="AI-native video editor: desktop app, terminal UI, CLI, and an AI connection over one engine"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 provides=('viode')
 conflicts=('viode')
 source=("$url/releases/download/v$pkgver/viode_${pkgver}_amd64.deb")
-sha256sums=('cfa76417f9dc80f809ee0359336a31ecda807319081f795efb85f9038ee4dae4')
+sha256sums=('8ef760489eddfde0efbad040c3436a3b1f7e7a6bacab4ed2ed8361e0b42471b2')
 
 package() {
   bsdtar -xf "$srcdir"/data.tar.* -C "$pkgdir"
